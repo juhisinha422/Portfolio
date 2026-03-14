@@ -1,516 +1,612 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juhi's Resume</title>
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juhi Sinha | DevOps Engineer</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d1117;
+  --bg2:#161b27;
+  --card:#1a1f2e;
+  --card2:#1e2436;
+  --blue:#4d9ef7;
+  --purple:#a855f7;
+  --green:#22c55e;
+  --orange:#f97316;
+  --red:#ef4444;
+  --teal:#14b8a6;
+  --text:#e2e8f0;
+  --muted:#8892a4;
+  --border:rgba(255,255,255,0.07);
+  --radius:12px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
 
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(13,17,23,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 40px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:18px;font-weight:700;color:var(--blue);text-decoration:none}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-icons{display:flex;gap:16px}
+.nav-icons a{color:var(--muted);font-size:16px;transition:color .2s}
+.nav-icons a:hover{color:var(--blue)}
+
+/* HERO */
+#about{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:calc(100vh - 60px);padding:60px 80px;align-items:center;background:linear-gradient(135deg,#0d1117 60%,#0f1520)}
+.hero-left{display:flex;flex-direction:column;gap:24px}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:360px}
+.stat-box{padding:20px 24px;border-radius:var(--radius);border:1px solid var(--border)}
+.stat-box.blue{background:rgba(77,158,247,0.1);border-color:rgba(77,158,247,0.2)}
+.stat-box.green{background:rgba(34,197,94,0.1);border-color:rgba(34,197,94,0.2)}
+.stat-box.purple{background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.2)}
+.stat-box.orange{background:rgba(249,115,22,0.1);border-color:rgba(249,115,22,0.2)}
+.stat-num{font-size:28px;font-weight:700}
+.stat-box.blue .stat-num{color:var(--blue)}
+.stat-box.green .stat-num{color:var(--green)}
+.stat-box.purple .stat-num{color:var(--purple)}
+.stat-box.orange .stat-num{color:var(--orange)}
+.stat-label{font-size:12px;color:var(--muted);margin-top:2px}
+
+.devops-ring{position:relative;width:220px;height:220px;margin:16px auto}
+.ring-svg{width:220px;height:220px;animation:spin 12s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ring-inner{position:absolute;inset:20px;background:var(--card);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.ring-inner i{font-size:32px;color:var(--blue)}
+.ring-inner span{font-size:13px;font-weight:600;color:var(--text)}
+
+.skill-chips{display:flex;flex-wrap:wrap;gap:8px;max-width:360px}
+.chip{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:500;border:1px solid}
+.chip.blue{background:rgba(77,158,247,0.12);border-color:rgba(77,158,247,0.3);color:var(--blue)}
+.chip.green{background:rgba(34,197,94,0.12);border-color:rgba(34,197,94,0.3);color:var(--green)}
+.chip.purple{background:rgba(168,85,247,0.12);border-color:rgba(168,85,247,0.3);color:var(--purple)}
+.chip.orange{background:rgba(249,115,22,0.12);border-color:rgba(249,115,22,0.3);color:var(--orange)}
+.chip.teal{background:rgba(20,184,166,0.12);border-color:rgba(20,184,166,0.3);color:var(--teal)}
+
+.hero-right{padding-left:60px}
+.hero-name{font-size:72px;font-weight:800;line-height:1;margin-bottom:12px}
+.hero-name span{display:block}
+.hero-name .name1{color:var(--text)}
+.hero-name .name2{background:linear-gradient(90deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-role{font-size:20px;color:var(--muted);margin-bottom:20px}
+.exp-badge{background:linear-gradient(90deg,rgba(77,158,247,0.15),rgba(168,85,247,0.15));border:1px solid rgba(77,158,247,0.3);padding:12px 20px;border-radius:8px;font-size:15px;font-weight:600;color:var(--blue);margin-bottom:24px;display:inline-block}
+.hero-bio{color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:28px;max-width:520px}
+.contact-chips{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.contact-chip{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:8px;display:flex;align-items:center;gap:10px;font-size:13px}
+.contact-chip i{color:var(--blue)}
+.contact-chip span{color:var(--muted);font-size:11px;display:block}
+.contact-chip strong{color:var(--text);font-size:13px}
+.service-icons{display:flex;gap:12px}
+.svc{background:var(--card);border:1px solid var(--border);padding:16px;border-radius:10px;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:11px;color:var(--muted);min-width:80px;text-align:center}
+.svc i{font-size:22px}
+.svc.blue i{color:var(--blue)}
+.svc.green i{color:var(--green)}
+.svc.purple i{color:var(--purple)}
+.svc.orange i{color:var(--orange)}
+
+/* SECTIONS */
+section:not(#about){padding:80px 80px}
+.sec-header{text-align:center;margin-bottom:56px}
+.sec-header h2{font-size:36px;font-weight:700;color:var(--text);margin-bottom:12px}
+.sec-header p{color:var(--muted);font-size:15px;max-width:600px;margin:auto}
+
+/* SKILLS */
+#skills{background:var(--bg)}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px}
+.skill-card-head{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.skill-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px}
+.skill-icon.blue{background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:#fff}
+.skill-icon.green{background:linear-gradient(135deg,#22c55e,#15803d);color:#fff}
+.skill-icon.purple{background:linear-gradient(135deg,#a855f7,#7e22ce);color:#fff}
+.skill-icon.orange{background:linear-gradient(135deg,#f97316,#c2410c);color:#fff}
+.skill-icon.red{background:linear-gradient(135deg,#ef4444,#b91c1c);color:#fff}
+.skill-icon.teal{background:linear-gradient(135deg,#14b8a6,#0f766e);color:#fff}
+.skill-card-head h3{font-size:16px;font-weight:700;color:var(--text)}
+.skill-bar-row{margin-bottom:16px}
+.skill-bar-label{display:flex;justify-content:space-between;margin-bottom:6px;font-size:13px}
+.skill-bar-label span{color:var(--text)}
+.skill-bar-label em{color:var(--muted);font-style:normal}
+.skill-bar-track{height:5px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden}
+.skill-bar-fill{height:100%;border-radius:3px;width:0;transition:width 1.2s ease}
+.fill-blue{background:linear-gradient(90deg,#3b82f6,#60a5fa)}
+.fill-green{background:linear-gradient(90deg,#22c55e,#4ade80)}
+.fill-purple{background:linear-gradient(90deg,#a855f7,#c084fc)}
+.fill-orange{background:linear-gradient(90deg,#f97316,#fb923c)}
+.fill-red{background:linear-gradient(90deg,#ef4444,#f87171)}
+.fill-teal{background:linear-gradient(90deg,#14b8a6,#2dd4bf)}
+
+/* EXPERIENCE */
+#experience{background:var(--bg2)}
+.timeline{max-width:860px;margin:auto;position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--blue),var(--purple),transparent)}
+.tl-item{position:relative;margin-bottom:40px}
+.tl-dot{position:absolute;left:-27px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--blue);border:2px solid var(--bg2);box-shadow:0 0 0 3px rgba(77,158,247,0.2)}
+.tl-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px 32px}
+.tl-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.tl-top h3{font-size:18px;font-weight:700;color:var(--text)}
+.tl-badge{background:rgba(77,158,247,0.1);border:1px solid rgba(77,158,247,0.25);color:var(--blue);padding:3px 12px;border-radius:20px;font-size:12px;font-weight:600}
+.tl-company{color:var(--muted);font-size:13px;margin-bottom:16px;display:flex;align-items:center;gap:6px}
+.tl-points{list-style:none;display:flex;flex-direction:column;gap:8px}
+.tl-points li{color:var(--muted);font-size:14px;padding-left:18px;position:relative}
+.tl-points li::before{content:'▸';color:var(--blue);position:absolute;left:0}
+
+/* PROJECTS */
+#projects{background:var(--bg)}
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:transform .2s,border-color .2s}
+.proj-card:hover{transform:translateY(-4px);border-color:rgba(77,158,247,0.3)}
+.proj-head{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+.proj-icon{width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.proj-icon.blue{background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:#fff}
+.proj-icon.green{background:linear-gradient(135deg,#22c55e,#15803d);color:#fff}
+.proj-icon.purple{background:linear-gradient(135deg,#a855f7,#7e22ce);color:#fff}
+.proj-icon.orange{background:linear-gradient(135deg,#f97316,#c2410c);color:#fff}
+.proj-icon.red{background:linear-gradient(135deg,#ef4444,#b91c1c);color:#fff}
+.proj-head h3{font-size:17px;font-weight:700;color:var(--text)}
+.proj-desc{color:var(--muted);font-size:14px;line-height:1.7;margin-bottom:20px}
+.proj-achievements{margin-bottom:20px}
+.proj-achievements h4{font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px}
+.proj-achievements li{list-style:none;color:var(--muted);font-size:13px;padding:3px 0 3px 22px;position:relative}
+.proj-achievements li::before{content:'✓';color:var(--green);position:absolute;left:0;font-weight:700}
+.proj-tech{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+.tech-tag{background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--muted);padding:3px 10px;border-radius:6px;font-size:12px}
+.proj-links{display:flex;gap:20px}
+.proj-links a{color:var(--muted);font-size:13px;text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .2s}
+.proj-links a:hover{color:var(--blue)}
+
+/* CONTACT */
+#contact{background:var(--bg2)}
+.contact-wrapper{display:grid;grid-template-columns:1fr 1.5fr;gap:60px;max-width:1000px;margin:auto;align-items:start}
+.contact-left h3{font-size:20px;font-weight:700;color:var(--text);margin-bottom:24px}
+.contact-item{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.ci-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;flex-shrink:0}
+.ci-icon.blue{background:linear-gradient(135deg,#3b82f6,#1d4ed8)}
+.ci-icon.green{background:linear-gradient(135deg,#22c55e,#15803d)}
+.ci-icon.purple{background:linear-gradient(135deg,#a855f7,#7e22ce)}
+.ci-label{font-size:12px;color:var(--muted)}
+.ci-value{font-size:14px;color:var(--blue)}
+.connect-online{margin:28px 0 24px}
+.connect-online h3{font-size:16px;font-weight:700;color:var(--text);margin-bottom:14px}
+.social-boxes{display:flex;gap:10px}
+.soc-box{width:44px;height:44px;background:var(--card);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:18px;transition:all .2s}
+.soc-box:hover{border-color:var(--blue);color:var(--blue)}
+.resume-btn{background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;border:none;padding:14px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;text-decoration:none;transition:opacity .2s}
+.resume-btn:hover{opacity:.9}
+.contact-form-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:36px}
+.contact-form-card h3{font-size:20px;font-weight:700;color:var(--text);margin-bottom:24px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-group{margin-bottom:16px}
+.form-group label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px}
+.form-group input,.form-group textarea{width:100%;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:8px;padding:12px 16px;color:var(--text);font-size:14px;font-family:inherit;transition:border-color .2s;resize:none}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--blue)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--muted)}
+.send-btn{width:100%;background:linear-gradient(90deg,var(--blue),var(--purple));color:#fff;border:none;padding:14px;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;transition:opacity .2s}
+.send-btn:hover{opacity:.9}
+#formMsg{margin-top:10px;font-size:14px;text-align:center}
+
+/* FOOTER */
+footer{text-align:center;padding:28px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
+
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  #about{grid-template-columns:1fr;padding:40px 24px}
+  .hero-right{padding-left:0;margin-top:32px}
+  .hero-name{font-size:48px}
+  section:not(#about){padding:60px 24px}
+  .skills-grid,.projects-grid{grid-template-columns:1fr}
+  .contact-wrapper{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
 <body>
 
-    <!-- <a href="https://www.google.com">Click Me</a> -->
+<!-- NAV -->
+<nav>
+  <a href="#about" class="nav-logo">Juhi Sinha</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-icons">
+    <a href="https://github.com/juhisinha422" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/juhi-sinha-2aa280176/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:jsinha1999@gmail.com"><i class="fas fa-envelope"></i></a>
+  </div>
+</nav>
 
-    <header>
-        <table>
-            <tr>
-                <td>
-                    <a href="https://www.github.com/Juhi Sinha">
-                        <img style="float: left;" width="300" src="https://raw.githubusercontent.com/juhisinha422/Portfolio/main/Miss%20Sinha.png" alt="Juhi Sinha's Photo">
+<!-- HERO / ABOUT -->
+<section id="about">
+  <div class="hero-left">
+    <div class="stats-grid">
+      <div class="stat-box blue">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-box green">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Projects Deployed</div>
+      </div>
+      <div class="stat-box purple">
+        <div class="stat-num">99.9%</div>
+        <div class="stat-label">Uptime SLA</div>
+      </div>
+      <div class="stat-box orange">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Monitoring</div>
+      </div>
+    </div>
 
-                            
-                    </a>
-                </td>
-                <td>
-                    <h1>Juhi Sinha</h1>
-                    <p><i>AWS DevOps Engineer<a target="_blank" href="https://www.tcs.com/">TCS</a></i></p>
-                    <p>I ❤️ DevOps, Coding Enthusiast 🚀</p>
-                    
-                    <nav>
-                        <ul>
-                            <li><a href="#education">Education</a></li>
-                            <li><a href="#internships">Internships</a></li>
-                            <li><a href="#projects">Projects</a></li>
-                            <li><a href="#contactme">Connect with Me</a></li>
-                        </ul>
-                    </nav>
+    <div class="devops-ring">
+      <svg class="ring-svg" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="110" cy="110" r="100" stroke="url(#ringGrad)" stroke-width="6" stroke-linecap="round" stroke-dasharray="200 430"/>
+        <defs>
+          <linearGradient id="ringGrad" x1="0" y1="0" x2="220" y2="220" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#4d9ef7"/>
+            <stop offset="50%" stop-color="#a855f7"/>
+            <stop offset="100%" stop-color="#22c55e"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="ring-inner">
+        <i class="fas fa-cloud"></i>
+        <span>DevOps</span>
+        <span style="color:var(--muted);font-size:11px">Engineer</span>
+      </div>
+    </div>
 
-                </td>
-            </tr>
-        </table>
+    <div class="skill-chips">
+      <span class="chip blue">AWS</span>
+      <span class="chip green">Kubernetes</span>
+      <span class="chip purple">Docker</span>
+      <span class="chip orange">AWS DevOps</span>
+      <span class="chip teal">Terraform</span>
+      <span class="chip blue">Jenkins</span>
+      <span class="chip green">Linux</span>
+      <span class="chip purple">CI/CD</span>
+    </div>
+  </div>
 
+  <div class="hero-right">
+    <div class="hero-name">
+      <span class="name1">Juhi</span>
+      <span class="name2">Sinha</span>
+    </div>
+    <div class="hero-role">AWS Cloud &amp; DevOps Engineer</div>
+    <div class="exp-badge">4+ Years of Experience in IT Industry</div>
+    <p class="hero-bio">
+      Passionate Cloud &amp; DevOps Engineer with 4+ years of experience specializing in building scalable infrastructure, automating CI/CD pipelines, and optimizing cloud architectures. Expert in AWS, Kubernetes, Docker, and modern DevSecOps practices with a focus on reliability and performance.
+    </p>
+    <div class="contact-chips">
+      <div class="contact-chip">
+        <i class="fas fa-envelope"></i>
+        <div><span>Email</span><strong>jsinha1999@gmail.com</strong></div>
+      </div>
+      <div class="contact-chip">
+        <i class="fas fa-map-marker-alt"></i>
+        <div><span>Location</span><strong>India</strong></div>
+      </div>
+    </div>
+    <div class="service-icons">
+      <div class="svc blue"><i class="fas fa-cloud"></i>Cloud Architecture</div>
+      <div class="svc green"><i class="fas fa-code-branch"></i>CI/CD Pipelines</div>
+      <div class="svc purple"><i class="fas fa-server"></i>Infrastructure</div>
+      <div class="svc orange"><i class="fas fa-shield-alt"></i>Security</div>
+    </div>
+  </div>
+</section>
 
-        <hr>
-    </header>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-header fade-in">
+    <h2>Technical Expertise</h2>
+    <p>Comprehensive skill set spanning cloud infrastructure, DevOps practices, and modern deployment technologies</p>
+  </div>
+  <div class="skills-grid">
 
-    <!-- Header ends -->
+    <div class="skill-card fade-in">
+      <div class="skill-card-head">
+        <div class="skill-icon blue"><i class="fas fa-cloud"></i></div>
+        <h3>Cloud Platforms</h3>
+      </div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>AWS</span><em>95%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-blue" data-w="95"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>EC2 &amp; ECS</span><em>90%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-blue" data-w="90"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>S3 &amp; CloudFront</span><em>88%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-blue" data-w="88"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>Lambda &amp; API Gateway</span><em>85%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-blue" data-w="85"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>IAM &amp; Security</span><em>90%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-blue" data-w="90"></div></div></div>
+    </div>
 
-    <main>
+    <div class="skill-card fade-in">
+      <div class="skill-card-head">
+        <div class="skill-icon green"><i class="fas fa-code-branch"></i></div>
+        <h3>CI/CD &amp; Version Control</h3>
+      </div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>Jenkins</span><em>92%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-green" data-w="92"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>GitHub Actions</span><em>88%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-green" data-w="88"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>Git &amp; GitFlow</span><em>95%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-green" data-w="95"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>SonarQube</span><em>85%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-green" data-w="85"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>Pipeline Automation</span><em>90%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-green" data-w="90"></div></div></div>
+    </div>
 
-        <section id="education">
-            <h2>Education</h2>
-            <table border="">
-                <tr>
-                    <th>Course</th>
-                    <th>Institute</th>
-                    <th>Year</th>
-                    <th>Result</th>
-                </tr>
-                <tr>
-                    <td>B.Tech in CSE</td>
-                    <td>RGPV, Bhopal, Madhya Pradesh</td>
-                    <td>2021</td>
-                    <td>8.31 CGPA</td>
-                </tr>
-                <tr>
-                    <td>12<sup>th</sup> Grade</td>
-                    <td>CBSE, Science</td>
-                    <td>2016</td>
-                    <td>70%</td>
-                </tr>
-            </table>
-        </section>
+    <div class="skill-card fade-in">
+      <div class="skill-card-head">
+        <div class="skill-icon purple"><i class="fas fa-cube"></i></div>
+        <h3>Containerization &amp; Orchestration</h3>
+      </div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>Kubernetes</span><em>85%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-purple" data-w="85"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>Docker</span><em>92%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-purple" data-w="92"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>Helm Charts</span><em>82%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-purple" data-w="82"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>Container Security</span><em>80%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-purple" data-w="80"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>Microservices</span><em>87%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-purple" data-w="87"></div></div></div>
+    </div>
 
-        <section id="internships">
-            <h2>Internships</h2>
-            <article>
-                <p><strong>Better Butter</strong> an Indian Online Cooking Platform</p>
-                <p><i>Android Developer Intern</i></p>
-                <ul>
-                    <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla autem itaque pariatur sed libero
-                        architecto obcaecati deleniti nobis suscipit. Laboriosam, optio magni. Temporibus non magnam quas id
-                        fugit corporis fugiat facilis libero in itaque asperiores, et, delectus illo a natus!</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti at eius nulla repellat, odio
-                        aliquam
-                        iure necessitatibus qui accusantium obcaecati.</li>
-                </ul>
-            </article>
-        </section>
+    <div class="skill-card fade-in">
+      <div class="skill-card-head">
+        <div class="skill-icon orange"><i class="fas fa-server"></i></div>
+        <h3>Infrastructure &amp; Systems</h3>
+      </div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>Linux Administration</span><em>90%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-orange" data-w="90"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>Terraform</span><em>88%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-orange" data-w="88"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>Ansible</span><em>82%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-orange" data-w="82"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>Networking</span><em>85%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-orange" data-w="85"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>Bash Scripting</span><em>87%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-orange" data-w="87"></div></div></div>
+    </div>
 
-        <section id="projects">
-            <h2>Projects</h2>
-            <ul>
-                <li>
-                    <article>
-                        <a href="https://github.com/juhisinha422/Wanderlust-Mega-Project">
-                            <h3>Wanderlust Mega Project</h3>
-                        </a>
-                        <ul>
-                            <li>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta dolores, nisi nihil
-                                    est
-                                    quas
-                                    voluptas maxime esse unde illo perspiciatis cum omnis dolorum exercitationem
-                                    architecto
-                                    rerum, aliquid minus enim repudiandae.</p>
-                            </li>
-                            <li>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium molestiae modi
-                                    voluptatem aspernatur dolorem eius voluptatum error a distinctio harum.</p>
-                            </li>
-                        </ul>
-                    </article>
-                </li>
-                <li>
-                    <article>
-                        <h3>Shuffler</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam cupiditate assumenda fugit, quo
-                            natus
-                            veniam ad commodi deserunt repellat, fugiat voluptatem nostrum vel voluptate impedit
-                            explicabo
-                            laboriosam velit minima consectetur atque. Dolorum, quo nam omnis maxime eos accusantium
-                            perspiciatis quam?</p>
-                    </article>
-                </li>
-            </ul>
-            <hr>
-        </section>
-    </main>
+    <div class="skill-card fade-in">
+      <div class="skill-card-head">
+        <div class="skill-icon red"><i class="fas fa-desktop"></i></div>
+        <h3>Monitoring &amp; Observability</h3>
+      </div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>CloudWatch</span><em>88%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-red" data-w="88"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>Grafana</span><em>80%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-red" data-w="80"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>Prometheus</span><em>78%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-red" data-w="78"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>ELK Stack</span><em>75%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-red" data-w="75"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>Alerting &amp; SLA</span><em>85%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-red" data-w="85"></div></div></div>
+    </div>
 
-    <aside>
+    <div class="skill-card fade-in">
+      <div class="skill-card-head">
+        <div class="skill-icon teal"><i class="fas fa-shield-alt"></i></div>
+        <h3>Security &amp; Compliance</h3>
+      </div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>DevSecOps</span><em>85%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-teal" data-w="85"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>Security Scanning</span><em>82%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-teal" data-w="82"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>IAM Policies</span><em>90%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-teal" data-w="90"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>Vulnerability Mgmt</span><em>80%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-teal" data-w="80"></div></div></div>
+      <div class="skill-bar-row"><div class="skill-bar-label"><span>Secrets Management</span><em>83%</em></div><div class="skill-bar-track"><div class="skill-bar-fill fill-teal" data-w="83"></div></div></div>
+    </div>
 
-    </aside>
+  </div>
+</section>
 
-    <!-- Main Section Ends -->
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-header fade-in">
+    <h2>Work Experience</h2>
+    <p>Professional journey building and scaling cloud infrastructure at enterprise level</p>
+  </div>
+  <div class="timeline">
+    <div class="tl-item fade-in">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-top">
+          <h3>DevOps Engineer</h3>
+          <span class="tl-badge">2022 – Present</span>
+        </div>
+        <div class="tl-company"><i class="fas fa-building"></i> Tata Consultancy Services (TCS)</div>
+        <ul class="tl-points">
+          <li>Design and manage end-to-end CI/CD pipelines using Jenkins, SonarQube and GitHub Actions for multiple enterprise clients</li>
+          <li>Orchestrate containerised workloads on Kubernetes (EKS) with Helm charts, HPA and cluster auto-scaling</li>
+          <li>Architect and provision cloud infrastructure on AWS using Terraform and Ansible for Infrastructure as Code</li>
+          <li>Implement DevSecOps practices — container vulnerability scanning, SAST/DAST integration, and secrets management</li>
+          <li>Reduced average deployment time by 70% through pipeline automation and reusable template libraries</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item fade-in">
+      <div class="tl-dot" style="background:var(--purple)"></div>
+      <div class="tl-card">
+        <div class="tl-top">
+          <h3>AWS DevOps Engineer</h3>
+          <span class="tl-badge" style="background:rgba(168,85,247,.1);border-color:rgba(168,85,247,.3);color:var(--purple)">2021 – 2022</span>
+        </div>
+        <div class="tl-company"><i class="fas fa-building"></i> Tata Consultancy Services (TCS)</div>
+        <ul class="tl-points">
+          <li>Set up and maintained AWS cloud environments including EC2, S3, IAM, VPC and RDS configurations</li>
+          <li>Built Docker containerisation workflows and developed initial CI/CD pipeline automation with Jenkins</li>
+          <li>Monitored infrastructure health using CloudWatch, handled incident response and improved system reliability</li>
+          <li>Collaborated with development teams to streamline build, test and release workflows</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <footer id="contactme">
-        <h2 id="contact">Connect With Me</h2>
-        <p>Email: <a href="mailto:juhisinha422@gmail.com"></a></p>
-        <p>Github: <a href="https://github.com/juhisinha422" target="_blank">github.com/juhisinha422</a></p>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sec-header fade-in">
+    <h2>Featured Projects</h2>
+    <p>Showcase of major DevOps implementations and cloud infrastructure projects</p>
+  </div>
+  <div class="projects-grid">
 
-        <a href="tel:+91989898989">
-            <p>9898989898</p>
-        </a>
+    <div class="proj-card fade-in">
+      <div class="proj-head">
+        <div class="proj-icon blue"><i class="fas fa-rocket"></i></div>
+        <h3>Wanderlust DevOps Project</h3>
+      </div>
+      <p class="proj-desc">Full CI/CD pipeline with Jenkins, Docker, SonarQube code quality gates, and Kubernetes production deployment on AWS EKS.</p>
+      <div class="proj-achievements">
+        <h4>Key Achievements</h4>
+        <ul>
+          <li>Automated full build-to-deploy pipeline in under 20 minutes</li>
+          <li>Integrated SonarQube with zero-tolerance quality gates</li>
+          <li>Achieved 100% deployment success rate on EKS</li>
+        </ul>
+      </div>
+      <div class="proj-tech">
+        <span class="tech-tag">Jenkins</span><span class="tech-tag">Docker</span><span class="tech-tag">Kubernetes</span><span class="tech-tag">SonarQube</span><span class="tech-tag">AWS EKS</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/juhisinha422/Wanderlust-Mega-Project" target="_blank"><i class="fab fa-github"></i> View Code</a>
+      </div>
+    </div>
 
-       <a href="aboutme.html" target="_blank">About Me</a><br>
+    <div class="proj-card fade-in">
+      <div class="proj-head">
+        <div class="proj-icon green"><i class="fas fa-shield-alt"></i></div>
+        <h3>Netflix DevSecOps Deployment</h3>
+      </div>
+      <p class="proj-desc">End-to-end DevSecOps pipeline with container vulnerability scanning, SAST integration, and secure Kubernetes deployment.</p>
+      <div class="proj-achievements">
+        <h4>Key Achievements</h4>
+        <ul>
+          <li>Implemented automated security scanning in pipeline</li>
+          <li>Reduced security vulnerabilities by embedding SAST early</li>
+          <li>Deployed on Kubernetes with RBAC and network policies</li>
+        </ul>
+      </div>
+      <div class="proj-tech">
+        <span class="tech-tag">DevSecOps</span><span class="tech-tag">Kubernetes</span><span class="tech-tag">Docker</span><span class="tech-tag">AWS</span><span class="tech-tag">Trivy</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/juhisinha422/DevSecOps-Project-Netflix-Deployment" target="_blank"><i class="fab fa-github"></i> View Code</a>
+      </div>
+    </div>
 
+    <div class="proj-card fade-in">
+      <div class="proj-head">
+        <div class="proj-icon purple"><i class="fas fa-shopping-cart"></i></div>
+        <h3>Online Shopping App (Amazon Q)</h3>
+      </div>
+      <p class="proj-desc">Modern e-commerce platform built with Amazon Q developer assistance and deployed on AWS cloud infrastructure.</p>
+      <div class="proj-achievements">
+        <h4>Key Achievements</h4>
+        <ul>
+          <li>Leveraged Amazon Q for AI-assisted code generation</li>
+          <li>Deployed with fully automated AWS pipeline</li>
+          <li>Implemented auto-scaling for traffic spikes</li>
+        </ul>
+      </div>
+      <div class="proj-tech">
+        <span class="tech-tag">Amazon Q</span><span class="tech-tag">AWS</span><span class="tech-tag">Docker</span><span class="tech-tag">CI/CD</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/juhisinha422/Online_Shopping_App_with_Amazon-Q" target="_blank"><i class="fab fa-github"></i> View Code</a>
+      </div>
+    </div>
 
-            
-        </a>
+    <div class="proj-card fade-in">
+      <div class="proj-head">
+        <div class="proj-icon orange"><i class="fas fa-play-circle"></i></div>
+        <h3>Prime Video Clone Deployment</h3>
+      </div>
+      <p class="proj-desc">Streaming platform clone deployed using a full DevOps toolchain with Docker containerisation and AWS services.</p>
+      <div class="proj-achievements">
+        <h4>Key Achievements</h4>
+        <ul>
+          <li>Containerised application with multi-stage Docker builds</li>
+          <li>Deployed on AWS with load balancing and health checks</li>
+          <li>Configured automated rollback on failed deployments</li>
+        </ul>
+      </div>
+      <div class="proj-tech">
+        <span class="tech-tag">Docker</span><span class="tech-tag">AWS</span><span class="tech-tag">Jenkins</span><span class="tech-tag">CI/CD</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/juhisinha422/Prime-Video-Clone-Deployment" target="_blank"><i class="fab fa-github"></i> View Code</a>
+      </div>
+    </div>
 
+  </div>
+</section>
 
-        <a href="#">Back To Top</a>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-header fade-in">
+    <h2>Let's Connect</h2>
+    <p>Ready to discuss your next DevOps project or cloud infrastructure needs? Let's talk about how we can work together.</p>
+  </div>
+  <div class="contact-wrapper fade-in">
+    <div class="contact-left">
+      <h3>Get In Touch</h3>
+      <div class="contact-item">
+        <div class="ci-icon blue"><i class="fas fa-envelope"></i></div>
+        <div><div class="ci-label">Email</div><div class="ci-value">jsinha1999@gmail.com</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon purple"><i class="fas fa-map-marker-alt"></i></div>
+        <div><div class="ci-label">Location</div><div class="ci-value">India</div></div>
+      </div>
+      <div class="connect-online">
+        <h3>Connect Online</h3>
+        <div class="social-boxes">
+          <a href="https://www.linkedin.com/in/juhi-sinha-2aa280176/" target="_blank" class="soc-box"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/juhisinha422" target="_blank" class="soc-box"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <a href="https://drive.google.com/uc?export=download&id=1SlmLfPT2Pw00wh41fy2LVezmAIQZQLQX" target="_blank" class="resume-btn"><i class="fas fa-download"></i> Download Resume</a>
+    </div>
 
-    </footer>
+    <div class="contact-form-card">
+      <h3>Send a Message</h3>
+      <form id="contactForm">
+        <div class="form-row">
+          <div class="form-group"><label>Name</label><input type="text" name="name" placeholder="Your Name" required></div>
+          <div class="form-group"><label>Email</label><input type="email" name="email" placeholder="your.email@example.com" required></div>
+        </div>
+        <div class="form-group"><label>Subject</label><input type="text" name="subject" placeholder="Project Discussion"></div>
+        <div class="form-group"><label>Message</label><textarea name="message" rows="5" placeholder="Tell me about your project requirements..." required></textarea></div>
+        <button type="submit" class="send-btn">Send Message</button>
+        <p id="formMsg"></p>
+      </form>
+    </div>
+  </div>
+</section>
 
+<footer>
+  <p>© 2026 Juhi Sinha. Built with modern DevOps practices and deployed on AWS.</p>
+</footer>
 
+<script>
+// Form
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const msg = document.getElementById('formMsg');
+  msg.textContent = '✓ Message sent! I will get back to you soon.';
+  msg.style.color = '#22c55e';
+  this.reset();
+});
 
-    <br><br><br>
+// Scroll animations
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam culpa eveniet id cum voluptatem neque inventore
-        porro veritatis? Architecto, praesentium, ipsam magni sint amet excepturi expedita iusto eaque exercitationem
-        sapiente quaerat sequi sunt necessitatibus dolor, cum hic itaque inventore. Veritatis, eveniet est odio ducimus
-        quas id veniam reprehenderit blanditiis dignissimos nobis ex nihil? Magnam veniam, esse quam ducimus placeat id
-        ullam repellendus. Totam culpa est nisi, qui quasi possimus. Expedita, officiis. Voluptatem veniam officia
-        facilis, fuga perferendis quaerat rerum nostrum quia reprehenderit nulla repellendus voluptatum vel dignissimos
-        cupiditate, provident dolorum ratione tempora laborum dolorem ducimus eos assumenda illum! Odit porro dolores
-        officiis, architecto recusandae tempore. Laborum error, accusantium velit deserunt eum, iste sed sit magni
-        veritatis molestiae asperiores! Voluptates nesciunt laborum ex aspernatur, totam ea iure quia tempore vel fugiat
-        distinctio labore aperiam neque assumenda nam libero dolorum ipsa nihil nulla quam mollitia, necessitatibus illo
-        doloremque. Et ea rerum blanditiis doloremque, commodi autem laborum maiores harum quia minus incidunt molestiae
-        totam architecto, provident voluptatibus rem expedita iste alias ipsam voluptate id magnam, cumque vero. Error
-        atque similique magnam nemo eius quasi corporis nihil quod expedita aspernatur exercitationem earum fuga
-        debitis, doloremque dolorem mollitia possimus suscipit dolores? Totam commodi eos quibusdam sit, officiis
-        laboriosam quaerat, earum maiores illum enim dicta. Distinctio odio hic ratione nostrum? Quas ipsam optio id,
-        amet et quasi minus dignissimos recusandae. Praesentium exercitationem esse cupiditate quam voluptas nostrum
-        saepe, ad itaque ratione repellendus mollitia unde autem eveniet id nulla fugit sint dolore inventore
-        perspiciatis! Quisquam itaque nihil non praesentium quia ratione nulla hic ab soluta. Mollitia neque aliquam
-        consectetur. Porro consectetur quia inventore qui ipsa cumque labore, nihil asperiores similique, facilis saepe
-        aspernatur in illo blanditiis molestias accusamus? Aliquid voluptatibus reprehenderit repellat ab rem laudantium
-        minima dolore tenetur eum est, quas adipisci animi aperiam. Accusamus ut pariatur itaque ipsum maxime, ratione
-        magnam a iure beatae porro inventore eius doloremque nobis fugit harum. Quidem cum voluptas id. Voluptas
-        consequuntur ipsa fuga odio non, nostrum quaerat ea, aliquid ratione tempore ipsum placeat! Dicta sunt libero
-        delectus veritatis perferendis illo aliquid expedita? Repellat iste vitae ratione. Adipisci quos dicta pariatur
-        sit, natus rerum repudiandae molestias ea dolorum quis repellendus eligendi doloremque cum iusto neque, hic
-        reiciendis minima laboriosam nesciunt amet a sequi? Nesciunt quidem, quisquam illo commodi ut reprehenderit odit
-        excepturi. Eos quos asperiores at modi adipisci! Id maiores reiciendis quis possimus impedit error corporis
-        molestiae voluptatum dolores earum necessitatibus eaque adipisci veritatis explicabo cum, doloribus saepe
-        temporibus. A velit totam, quas dolore soluta, dolor officiis perferendis, corrupti autem doloremque quia
-        recusandae architecto qui ut quaerat exercitationem nihil labore blanditiis at. Exercitationem consectetur in
-        labore expedita eligendi repudiandae debitis rerum soluta consequatur commodi nulla facilis error minus saepe
-        itaque laudantium harum impedit, molestias ducimus vitae. Veritatis dolorem voluptates alias dignissimos earum
-        quisquam aperiam amet illo cumque tempora quidem optio numquam enim ab repellendus autem dicta, fuga veniam
-        necessitatibus dolor? Veritatis, quaerat recusandae dolor minus necessitatibus reprehenderit sequi corrupti
-        debitis excepturi incidunt amet mollitia! Dignissimos repudiandae ut in, adipisci dolor iusto debitis impedit
-        praesentium dolorum laborum natus doloremque distinctio voluptate unde! Minima commodi iusto dolorem inventore
-        enim excepturi. Nostrum neque dicta accusamus quasi ratione veritatis quis perspiciatis, assumenda numquam quam
-        reprehenderit adipisci expedita quae quo soluta eum vel a dolorum qui? Ratione, quam. Facilis molestias dicta
-        earum officia, sequi possimus harum eligendi eos sit magnam quis excepturi odit, ipsum delectus et! Delectus
-        esse ea id sit. Expedita eos eligendi fugit reiciendis exercitationem fugiat ea voluptates, adipisci, aliquam
-        dignissimos in tempora doloremque ex perspiciatis saepe porro aspernatur. Fuga id cupiditate hic labore,
-        quisquam deserunt vel mollitia necessitatibus autem eos ab voluptatem unde cum, aperiam expedita laborum
-        molestiae tenetur voluptatibus. Iure, rerum expedita recusandae repellendus laudantium delectus, error, aperiam
-        at quidem mollitia eveniet repellat aliquam quis alias. Aliquam tenetur, distinctio reprehenderit nobis
-        accusantium accusamus soluta nam deleniti temporibus nulla nostrum repudiandae, repellendus facere. Dolorem,
-        commodi? Beatae, dolorem neque sapiente voluptates incidunt ea saepe. Facilis fuga excepturi ipsum iste vel et
-        ipsa debitis, quaerat dolorem tempore, ab, praesentium modi eveniet! Ullam dolore eius, quod perspiciatis labore
-        cumque, eos asperiores, eveniet nihil molestias aperiam harum magnam autem necessitatibus ab explicabo laborum
-        quam quis est quos suscipit sunt! Atque voluptate eligendi necessitatibus, molestias facere ex sed quis soluta
-        eos. Nemo soluta totam officiis provident dolorem impedit repellendus veniam fuga libero incidunt labore
-        corrupti facere sunt eaque blanditiis esse reprehenderit nostrum reiciendis, natus aliquid, assumenda
-        accusantium perspiciatis. Sapiente odio tempora delectus repellendus? Quod ullam eum quos tempora explicabo
-        quidem assumenda non debitis sapiente error! Ipsam, neque! Illo dolorem amet vero delectus doloremque ratione
-        omnis optio eveniet sed. Ab iusto, suscipit eius corporis illum corrupti cupiditate porro ut soluta eveniet
-        fugit quaerat sequi ratione fuga, optio aperiam consequuntur culpa, voluptatem debitis odit modi consequatur
-        molestias! Facilis consequuntur ad, reprehenderit quisquam libero ex doloremque doloribus voluptatem voluptate
-        dolores sint nihil iste quidem dicta. Perspiciatis provident iusto facere vel temporibus earum asperiores, non
-        iure ullam, odio doloribus, nobis nulla totam doloremque ipsa quidem. In velit voluptatibus, expedita, natus
-        totam aut soluta error sapiente dicta unde similique. Vel, officia iusto. Ea assumenda veritatis inventore, ad
-        vel eaque illo nulla alias consectetur odio tempore quas. Dignissimos odio temporibus velit debitis culpa
-        adipisci quibusdam cum aspernatur nesciunt nam voluptatum, veniam aliquam unde praesentium repellat! Rerum odio
-        quis dicta eveniet? Reprehenderit beatae dolorum voluptatum blanditiis dicta impedit soluta, repudiandae itaque
-        harum quisquam maxime quos ex. Est, iste quasi quia iure sit id facere voluptatum delectus facilis labore
-        obcaecati minus, neque soluta enim ea dolores numquam dolor assumenda animi unde odit cumque? Tenetur iusto rem
-        assumenda ea unde laboriosam eum consequuntur dolorem eveniet eos sapiente recusandae iure voluptate itaque ad
-        ipsam repellendus saepe aspernatur, at libero quia modi quae voluptas. Ut maiores cum eum possimus dolores
-        laudantium quisquam, placeat magni voluptatem quasi! Inventore sunt cupiditate commodi atque voluptates
-        blanditiis, sit sint pariatur voluptatem porro nostrum totam ut? Dignissimos, vitae? Repellendus ipsam minus
-        debitis error nisi saepe neque facilis nihil suscipit est id nemo aliquid dolorem nam provident perferendis,
-        ullam magnam dolores laudantium. Nulla eum voluptas dolore, tenetur quo ipsum quam nihil aspernatur, commodi
-        possimus accusamus blanditiis culpa, quaerat sed? Sequi quis facilis esse error doloremque enim odit molestias
-        atque, officiis commodi! Iure obcaecati numquam suscipit enim voluptate. Libero cum blanditiis ipsum voluptate
-        ullam repellat doloribus sed dolorem expedita, ratione necessitatibus ab pariatur, corrupti nulla quos in vero!
-        Voluptatibus rerum debitis temporibus doloremque provident, quaerat est delectus corrupti similique iste
-        asperiores dicta aliquid dolor modi nobis voluptate perspiciatis aut ullam beatae maiores corporis deleniti
-        eius! Qui iure vitae unde voluptatem, fugiat saepe voluptates ut. Quas minus consectetur asperiores molestiae,
-        id deserunt. Perspiciatis, repellat maiores esse dicta atque vero, in voluptas voluptatem ea quod voluptatum
-        velit consequuntur mollitia, iure maxime enim dignissimos quas? Saepe doloremque officiis pariatur accusamus.
-        Consectetur exercitationem, aliquid obcaecati voluptates minima error quidem tenetur molestiae repellat
-        assumenda facilis eius vitae doloribus velit esse quaerat amet nesciunt? Consequuntur eius iure ratione
-        inventore eum amet in ea aut cupiditate vel! Magni in asperiores quae officiis iusto recusandae esse nostrum!
-        Labore similique mollitia aliquam, eius exercitationem iste fugit reiciendis neque vel dolorum non quas numquam
-        enim repellendus veniam repellat quaerat! Placeat soluta commodi omnis saepe ex praesentium itaque veniam beatae
-        hic, ad ipsa aspernatur maxime porro dolor. Beatae, eum voluptatibus porro earum ab commodi fugiat placeat saepe
-        in labore ea tenetur odit error nihil, temporibus quisquam sint debitis alias voluptatum ducimus aspernatur. Non
-        omnis, iste sed ipsam quas cumque dolorem vero ea excepturi necessitatibus culpa eius minima nobis dolor
-        recusandae ut nisi nesciunt. Saepe, cupiditate pariatur culpa sequi numquam sint, voluptatem reiciendis dolor
-        voluptatum, possimus consequuntur ratione ipsa quas assumenda atque dolorum. Totam veniam molestiae excepturi
-        fugiat architecto amet, soluta magni aspernatur enim libero tenetur error optio provident autem similique
-        sapiente aliquid. Culpa libero eum autem ducimus odit ipsam sequi facilis dignissimos possimus, similique,
-        quidem magni dolores repellat iure numquam? Tempore, amet rerum ad debitis sit exercitationem illo id voluptate
-        voluptatum? Eligendi at aperiam, nisi culpa pariatur velit dolores alias nemo iusto quis et soluta asperiores
-        eaque nulla vitae delectus debitis minima animi est sit modi expedita! Maxime quos, unde possimus sed beatae quo
-        dignissimos facilis mollitia alias inventore veritatis accusantium odit perferendis non! Impedit doloremque,
-        nihil obcaecati magni quibusdam illo, ex unde dolore, esse voluptatem sunt dolores corrupti. Unde ratione
-        pariatur aut quidem accusamus quia reiciendis mollitia asperiores, doloribus quisquam ab dignissimos? Inventore
-        facere suscipit, ratione eius eveniet similique! Molestiae cum quisquam omnis atque. Provident repudiandae odio
-        a ad. Excepturi eveniet esse explicabo nesciunt est quidem, possimus mollitia sequi suscipit maxime quae quos.
-        Dolore rerum minima provident atque ut repudiandae architecto, esse eos asperiores veritatis adipisci ducimus
-        assumenda inventore id voluptatum quo necessitatibus quam nihil maxime tempore blanditiis. Perspiciatis optio
-        culpa, aut obcaecati tenetur assumenda officiis eveniet saepe commodi! Fuga, necessitatibus? Quasi dicta quas
-        sunt perferendis dolor dolores facere voluptas blanditiis molestias! Consequuntur accusantium enim vel est
-        commodi molestiae nisi perferendis alias quas deserunt quo accusamus, odit ipsa, aspernatur assumenda asperiores
-        qui sapiente at culpa repellendus possimus recusandae porro nulla. Magnam non quos eos debitis saepe officiis,
-        quas unde nemo perspiciatis voluptate animi autem ipsam minus maxime atque. A quidem, explicabo pariatur cum
-        temporibus excepturi culpa optio laudantium ad vel doloribus enim ut eum laborum provident magnam nesciunt? Rem
-        magnam iste deleniti commodi quibusdam animi odio, ducimus amet doloremque, dignissimos nam officia labore natus
-        consequatur id blanditiis est veritatis alias atque, tempore fugit doloribus? Quas voluptas provident quos
-        veniam asperiores sint porro, ea inventore possimus pariatur laborum consequuntur illum? Tenetur veritatis
-        aspernatur, officia atque mollitia beatae nesciunt dignissimos voluptatem ipsam deserunt deleniti vitae
-        architecto qui, facilis nihil iste dolorum, molestiae magnam? Sit ea voluptatum ipsam nisi, aperiam autem quod
-        libero debitis et hic molestiae fugit, recusandae dolorum velit atque. Harum nostrum ipsa fuga corporis.
-        Incidunt accusamus tenetur voluptatum ea porro dolor illum aut cupiditate asperiores quaerat nemo, eius,
-        corporis rerum voluptatem vel soluta enim natus, aliquam officiis cum laborum beatae sapiente! Odio ipsa sunt
-        est ad optio! Consequuntur, facere saepe? Vel assumenda nesciunt ipsum, vitae ab aspernatur earum officia sint
-        veniam quidem sapiente ex ratione nulla hic provident quod atque quasi quam explicabo perspiciatis perferendis
-        dicta quis consectetur. Vel perferendis repellat, recusandae libero quo inventore, voluptate cupiditate non ipsa
-        itaque similique, sit fuga? Aperiam repudiandae quibusdam molestias in explicabo magnam doloremque unde fugit
-        assumenda porro similique, qui mollitia! Rerum aperiam perspiciatis nam error voluptate, saepe praesentium
-        inventore eum placeat earum ex fugiat iste dolorem repellendus ut ea quae eveniet est illo voluptatem
-        voluptatibus commodi! Quibusdam voluptates facere quisquam quam pariatur itaque deleniti esse obcaecati vel
-        exercitationem, autem eum commodi. Vel libero esse quaerat est quidem necessitatibus molestias doloremque.
-        Mollitia laudantium tenetur obcaecati ab placeat incidunt soluta harum ipsam perspiciatis doloribus eum non
-        minus ratione iusto sint molestias, deserunt aspernatur esse illo aut. Incidunt, ullam distinctio necessitatibus
-        ex et nihil culpa, maiores veritatis suscipit at sequi mollitia cumque earum consectetur ipsam ab molestiae?
-        Fuga eveniet pariatur enim molestias magni temporibus facere perspiciatis ipsa corrupti? Ad odio illum dicta
-        porro, fugiat laboriosam earum enim commodi harum non, cupiditate perferendis dolore similique velit veniam
-        beatae! Aperiam delectus ratione culpa ea, quod recusandae eligendi. Natus porro repellat, laudantium, et
-        mollitia voluptas omnis amet debitis quasi quia eum impedit suscipit commodi hic, eveniet perferendis sint
-        voluptate iste fugiat in magni voluptatibus unde sit? Fugit accusantium ullam, molestias blanditiis minus aut
-        perspiciatis officia dolorum asperiores vitae a tenetur saepe. Obcaecati perspiciatis deleniti, molestiae ab,
-        itaque eveniet, consectetur blanditiis quasi quibusdam ad sit inventore adipisci esse non dolores saepe incidunt
-        necessitatibus. Pariatur voluptatem expedita assumenda iusto ratione, modi libero consequatur a accusantium
-        maxime eos aperiam cum laborum consectetur voluptatibus quis nostrum placeat ab cupiditate recusandae tenetur
-        iure ut? Pariatur illum maxime quod ratione corrupti nihil doloribus delectus odio deleniti consequatur ab nulla
-        a quibusdam molestiae accusamus blanditiis, id natus et sapiente! Facere quae est ullam ut explicabo harum rem
-        adipisci rerum, amet cumque quos molestiae illum accusantium dolore quasi! Temporibus atque harum distinctio
-        impedit, rem ea vero facere itaque tenetur laboriosam nisi esse delectus quia aperiam illum accusamus eligendi!
-        Dolorum autem animi alias mollitia, rem sint commodi exercitationem nesciunt labore non magni sit! Vel fugiat
-        sint libero adipisci quaerat aspernatur. Quibusdam provident, molestias quas alias corrupti reiciendis
-        laboriosam perspiciatis, a ab cumque doloremque, minus sit veritatis velit possimus optio nisi? Consequuntur
-        ipsum ad perspiciatis nihil saepe eveniet vero! Sequi fuga recusandae repellat, aut obcaecati voluptates nemo!
-        Adipisci modi, nihil labore obcaecati numquam quos dolorem eaque ratione ex error pariatur repudiandae nobis
-        aperiam maxime cumque deleniti. Iure natus voluptates earum omnis quia perferendis eaque rerum, id eius magni
-        saepe ut quas repellendus aut expedita placeat dolorem facere vero aliquid, adipisci maiores! Quibusdam, totam
-        itaque hic perferendis ea ut, nihil quis dolores earum quos voluptate reiciendis culpa alias consequatur odio
-        doloribus quisquam laborum nisi ex enim iure officiis laudantium. Quae dolor illo enim id tempore deserunt qui
-        est alias, doloremque minus quasi reprehenderit, facilis sed neque et reiciendis adipisci? Minima, nisi deleniti
-        impedit necessitatibus culpa, hic esse aliquam, adipisci facere ab perspiciatis. Nemo harum quisquam dolorum cum
-        minus rerum mollitia ducimus eaque delectus itaque quis placeat, officiis, quibusdam iusto est quam ipsa
-        voluptatem soluta beatae blanditiis ad eos suscipit cumque a. Soluta culpa maxime pariatur beatae eum! Voluptate
-        blanditiis quaerat quibusdam nemo vero quasi ad veniam ullam? Quis minima voluptatum et nisi architecto
-        reprehenderit dignissimos minus quibusdam iusto eveniet unde est ab optio, vitae velit eius sed? Explicabo non
-        facilis sint voluptatum ipsa nesciunt natus odio sit hic, officiis earum similique incidunt? Numquam, doloremque
-        sequi nobis non facilis similique voluptatum delectus ducimus voluptatem, eligendi optio distinctio illum illo,
-        mollitia magnam corporis commodi qui fugit. Illo autem et, nostrum temporibus debitis voluptatem, alias aperiam
-        possimus maxime quo quibusdam quaerat vero cupiditate reprehenderit sint placeat adipisci, quia nemo facere
-        voluptatum accusamus porro tempore aspernatur illum. Quisquam eaque molestiae reprehenderit delectus? Dolorum
-        aspernatur, porro iure obcaecati consequuntur accusamus doloribus maxime adipisci non totam optio quia placeat
-        ullam! Odio adipisci temporibus doloremque aperiam laborum accusamus libero perferendis placeat aspernatur aut
-        fugit, repellat sit quae corrupti ut consequuntur porro facilis debitis? Sint debitis provident harum tempore
-        numquam reiciendis rerum, incidunt velit earum doloremque. Inventore magni doloremque minus molestiae,
-        cupiditate doloribus. Nesciunt non nulla omnis eligendi maxime. Inventore sed officiis molestias blanditiis
-        consequatur nesciunt eligendi aspernatur suscipit, recusandae facere voluptatum. Dignissimos odit quibusdam
-        eveniet doloremque dolorem eligendi voluptatem enim magnam eum, quo minima accusantium cumque. Officia alias
-        labore tenetur in debitis sunt omnis perspiciatis eaque? Molestias quam expedita labore cum eaque praesentium ab
-        sed voluptatum in accusantium, provident nisi saepe tempore officiis recusandae facere enim vitae! Minus odio
-        blanditiis necessitatibus ullam incidunt soluta eius nostrum consequatur sed, amet quisquam nulla impedit
-        dignissimos repellendus sapiente accusantium corrupti vel beatae dolorum voluptates. Debitis atque repudiandae,
-        tempore, quas totam sit magnam eum ducimus, odit modi asperiores veritatis dolores ad enim vero iusto unde
-        repellendus eveniet molestiae quis magni. Ducimus quidem incidunt minus quae sint ratione sapiente assumenda
-        vitae ipsam, dicta tempora hic architecto provident libero impedit corporis eveniet molestias consequatur
-        perferendis atque ut. Fugiat quaerat expedita quisquam libero eius aperiam repellat a mollitia consequatur
-        quibusdam corrupti delectus unde, odit maxime doloremque, laboriosam explicabo. Doloribus aliquam tenetur
-        laboriosam praesentium dignissimos laborum nesciunt, cupiditate similique ab autem laudantium modi fugiat neque
-        labore voluptate exercitationem nemo, a, consectetur aperiam assumenda sunt ut qui? Dignissimos earum ducimus
-        odio veritatis cum illum quibusdam error incidunt, et consectetur. Dolorum, in modi itaque tenetur distinctio at
-        nobis enim quos numquam error, atque id voluptatem ut, sapiente fugit aliquid. Expedita inventore tenetur velit
-        nobis nulla fugiat. Minima repudiandae nihil quidem ipsa maiores! Explicabo ducimus veniam, autem fugit,
-        eveniet, labore dolorem commodi perferendis deleniti molestias consectetur. Itaque ea nesciunt, enim
-        exercitationem, necessitatibus facere error consequuntur iste, tenetur eaque fugiat quisquam laboriosam
-        doloremque ab id provident officiis accusantium adipisci dicta rerum vel possimus nulla quae! Quibusdam
-        veritatis, vero quae amet, cumque eum, sed commodi perferendis earum quam vitae esse! Natus, perspiciatis
-        recusandae officia a doloremque sint eum fugit fuga mollitia, adipisci iure. At beatae quas sed, minima,
-        recusandae incidunt nihil deserunt officia quis animi voluptas obcaecati blanditiis aperiam repudiandae nobis
-        tempore sint iure, nemo commodi? Ut nemo sapiente corporis aliquid cum officiis alias? Eius, porro a. Odit
-        repudiandae enim magni, minus ad provident aut mollitia sint impedit, incidunt laborum ut quisquam sunt illo
-        corporis, sed soluta culpa saepe esse omnis rem deleniti quaerat? Sunt non quaerat ex, voluptatibus temporibus
-        quae repellendus aliquid quas et minima facere, laborum facilis recusandae incidunt perspiciatis! Facere quam
-        natus ex, repellendus minima nam veritatis quibusdam rem vel dignissimos officiis hic provident eius sunt illum
-        recusandae sequi officia inventore iste pariatur at laudantium! Laborum porro assumenda, commodi cumque quidem
-        asperiores beatae inventore magnam delectus ipsa. Quisquam iusto consequatur perspiciatis sit, amet molestiae
-        officiis aspernatur nostrum molestias labore saepe. Dolorum consectetur vel qui, ex laboriosam at ducimus ipsum
-        maiores, dignissimos iusto suscipit magni? Ad inventore magnam culpa ipsam repellendus, sunt debitis placeat
-        error. Incidunt fugit sed praesentium aliquam quo! Pariatur, hic obcaecati earum culpa inventore quo sapiente
-        asperiores suscipit impedit facilis sed rem aut cumque odio esse cum optio, harum nobis perspiciatis eum commodi
-        officia quia, veritatis iste. Sit ducimus commodi labore consequuntur saepe aspernatur maiores aliquam, quaerat
-        nobis in aperiam excepturi earum, perferendis sapiente, nesciunt accusantium reprehenderit voluptatem
-        praesentium. Eius expedita mollitia voluptate assumenda asperiores ad, quod iusto numquam aliquid maiores?
-        Facilis ratione, quaerat voluptatem reiciendis vel animi sunt quos perspiciatis itaque minima aliquam. Minus,
-        amet, blanditiis nulla exercitationem cumque illum accusamus, tempora error culpa sapiente beatae iure
-        voluptatibus magni consequatur eos! Suscipit architecto dolore soluta eaque iusto laboriosam eligendi minus
-        saepe corrupti, explicabo facere, cupiditate veniam accusamus tenetur sit dignissimos possimus voluptates
-        aliquam quidem repellat consectetur. Deserunt alias rem, fugiat, consectetur totam aperiam odit reprehenderit
-        ullam tempora eos provident facilis soluta sed veritatis hic asperiores. Recusandae, sed. Molestias illum
-        corrupti iure voluptatum ex neque totam voluptas suscipit iste debitis possimus aperiam magnam placeat alias
-        quisquam, excepturi accusantium dignissimos maxime quia! Quas beatae magni soluta sit ipsum sapiente fuga
-        laboriosam veritatis nam. Itaque placeat aspernatur fugit iusto earum dolorem ipsam voluptates doloremque
-        laborum debitis eum in delectus velit ullam iure, facere repellat corrupti architecto. Odit adipisci natus
-        exercitationem sed cumque, fugit reprehenderit vitae nisi quam commodi velit consequuntur corrupti unde
-        architecto, aspernatur minus sunt quibusdam? Eos incidunt iste sequi, labore asperiores sint hic dignissimos,
-        eaque obcaecati cumque cum quae consectetur porro at. Ad deserunt repudiandae placeat voluptas voluptatibus sunt
-        fugit fugiat! Quos, tempore aliquid commodi dolorum ullam eum quae impedit. Repellendus suscipit quis inventore
-        aperiam molestiae in architecto dignissimos adipisci impedit, iste magnam ipsa id perferendis et aut accusantium
-        nostrum dolores deserunt sed voluptates illum laudantium odio quam! Debitis sapiente eos corporis adipisci? Enim
-        aliquam dolorum a rem culpa numquam officia architecto eveniet deleniti ad vel cumque, possimus fuga quis ex
-        nesciunt non, dolorem dolor reprehenderit quos veritatis adipisci fugit. Veritatis fugit est enim accusamus.
-        Corrupti fugiat laborum aliquid, quo quae blanditiis harum ullam ab delectus molestiae labore possimus quibusdam
-        rem adipisci vero? Magni tenetur consequatur, possimus adipisci alias nulla rem! Cum ipsam tempora expedita
-        nesciunt, error voluptate? Aliquid quas libero vero fugiat officiis ut nostrum similique quos consequatur,
-        veniam quaerat ea voluptatibus, eos eum, voluptate dignissimos rerum tempore laborum perspiciatis quidem
-        inventore minima deleniti labore enim! Quisquam consectetur vitae, fuga iure quidem facere, beatae autem debitis
-        inventore error natus ipsa adipisci voluptas doloribus totam cum corporis rem ea? Vero voluptatum hic excepturi
-        suscipit fuga veritatis nam quisquam minima beatae ad facilis officiis accusamus maxime fugiat, repellendus
-        debitis vel molestiae iste voluptatibus libero ut. Corrupti animi iure perferendis possimus tenetur
-        necessitatibus reprehenderit repellendus libero eligendi, suscipit quo voluptatem molestias delectus fugiat
-        saepe ullam a quas omnis ipsum beatae aut quod aspernatur doloribus sed. Sequi adipisci voluptate quam, at
-        molestias unde praesentium ipsum sed quis error beatae corporis? Error a expedita, suscipit, dolore molestiae
-        doloremque quasi ad necessitatibus fuga, itaque quae fugit reprehenderit ratione rerum odit enim minus beatae!
-        Odio ipsa numquam, incidunt earum, distinctio vitae vel a ea expedita sunt officiis soluta, nostrum cumque
-        eveniet? Iste sit asperiores veniam quis at laudantium magni cupiditate, tempora itaque aut soluta maiores ipsa
-        quos eum porro, quas est tempore unde eaque debitis. Necessitatibus, incidunt praesentium laudantium itaque
-        ipsum amet blanditiis consequatur laborum perferendis, dicta minima exercitationem ratione, commodi numquam eos?
-        Architecto suscipit debitis officia autem corrupti iusto laboriosam illum possimus delectus enim! Placeat odio
-        ratione unde ea eveniet voluptatem consectetur voluptas quam itaque maxime et beatae quo expedita, libero
-        tempora quibusdam esse soluta voluptatibus adipisci alias excepturi incidunt? Aut, quas exercitationem nostrum
-        dolores nemo quidem nam distinctio, optio obcaecati aspernatur ipsa, dignissimos officiis totam saepe iure ad
-        cupiditate facere voluptas. Illum dolorem nulla omnis sequi! Modi, sed voluptatum ut unde exercitationem sunt
-        laborum animi, asperiores earum nobis ab? Voluptas culpa exercitationem reprehenderit nobis similique laudantium
-        labore id eveniet vitae, aliquam eos at consequuntur dolorem velit consequatur. Perspiciatis distinctio, magnam
-        tempore sunt maxime quaerat officia voluptatum odio ut blanditiis dignissimos molestiae qui. Incidunt alias
-        inventore molestiae tempora hic expedita omnis aut laudantium molestias, doloremque, architecto aliquam velit!
-        Eaque voluptatem, officiis commodi quibusdam sunt itaque doloribus voluptates veritatis sit dolorum aperiam
-        accusantium labore distinctio natus! Magnam sunt, cum architecto doloribus, repellendus enim ex officia facere
-        obcaecati voluptates molestias quidem temporibus corporis porro sit itaque. Nisi ut, ex dolorem, eligendi fugiat
-        distinctio a similique consequatur pariatur reiciendis dolore reprehenderit placeat! Libero, non voluptate
-        praesentium animi magnam ratione iusto? Iure adipisci vitae nesciunt maiores enim? Quibusdam autem natus
-        voluptatum dolores minima fuga fugit quo perspiciatis necessitatibus, sapiente assumenda quia esse, debitis
-        vitae reiciendis, labore atque. Exercitationem quibusdam ad enim, quas eius voluptatum debitis magni facere
-        maxime accusamus aut officiis tenetur eos illo consequuntur corrupti repellendus reprehenderit. Amet cum debitis
-        temporibus quidem laborum? Similique, magni porro. Hic, dolorem praesentium blanditiis porro eos amet tempora
-        atque minus quasi exercitationem! Ipsum corporis explicabo ad nihil est, illo odit, sunt natus fuga commodi
-        obcaecati debitis reiciendis alias dolorem temporibus quae sequi. Aperiam, libero iure dolores ratione
-        voluptates quae recusandae. Perspiciatis rerum iusto sit dolor quas praesentium doloribus placeat repudiandae,
-        expedita accusantium! Exercitationem, molestiae! Explicabo id totam ullam repudiandae vero officiis accusantium
-        repellendus deleniti commodi voluptatem rerum quia voluptate maiores dolorum deserunt quo sunt, suscipit
-        consequatur optio aperiam nobis maxime ea nihil dolor. Nostrum quaerat ipsa aliquam nam voluptatum ad soluta?
-        Facilis, dolores ipsum corporis dolor culpa nobis exercitationem maxime hic debitis eius aperiam odit deleniti
-        natus quos quibusdam error ipsa! Aliquam tempora quos, voluptate deleniti repellat amet quisquam soluta
-        explicabo nihil nam, voluptatem nemo rerum minima. Beatae eos error dolor ipsam eligendi tempore sed ducimus
-        reprehenderit minima, modi quam eum alias hic inventore iste, nisi totam praesentium libero nostrum rem atque
-        consequuntur? Minus tempore animi adipisci provident obcaecati! Error similique impedit explicabo expedita
-        quidem in eligendi? Distinctio possimus perspiciatis ea reiciendis repellendus aliquam similique doloremque enim
-        tenetur a ipsa eveniet incidunt magni ad maxime voluptatum recusandae ducimus, quae consectetur magnam
-        voluptatem adipisci officiis corrupti quod? Accusantium optio aliquam maiores nemo libero beatae! Ab deleniti
-        explicabo voluptatum quibusdam temporibus rem dicta magnam adipisci iusto, molestiae libero ullam corporis iure
-        animi similique quos quas ad necessitatibus officiis quasi modi minima, exercitationem at? Quae voluptatibus
-        excepturi sit cumque at sapiente asperiores, amet aspernatur iste dicta temporibus magnam qui, laboriosam
-        consequatur adipisci, placeat commodi. Quas excepturi temporibus debitis quaerat obcaecati, harum dolores.
-        Quaerat, delectus mollitia? Error quo ratione obcaecati repellat. Maiores exercitationem hic blanditiis atque
-        doloribus, repellat cupiditate delectus libero eos adipisci quae ipsa nam corrupti magni quasi rerum nihil!
-        Inventore neque explicabo facilis voluptatibus, consectetur molestias quis alias nisi asperiores totam obcaecati
-        blanditiis libero eum repudiandae et, quos cum temporibus dicta cumque. Sapiente, quaerat alias. Ex quaerat
-        impedit voluptatibus nisi dolorum natus dolor eum delectus dolores deserunt voluptates, qui hic alias suscipit
-        ut dicta accusantium assumenda. Quaerat at voluptates repellat excepturi! Cumque blanditiis fugiat quisquam
-        tempora itaque reiciendis iusto magnam exercitationem magni. Iste rerum repellat, doloremque itaque mollitia cum
-        ipsa laborum suscipit ratione, reiciendis non consequatur illo adipisci quae atque, id perspiciatis quod dicta.
-        Non quasi ad, ipsam autem nulla nobis eius ut laudantium ratione! Placeat expedita perspiciatis quibusdam cum.
-        Praesentium, nobis ullam vel, debitis sunt magni possimus, soluta laboriosam aspernatur laudantium iure. Quo
-        molestias quos earum voluptates numquam accusamus aspernatur illo facere exercitationem. Accusamus numquam
-        quasi, fuga est qui dicta, veritatis ullam nulla odit exercitationem illo recusandae at eveniet dolorum dolor
-        suscipit alias laboriosam natus mollitia illum, laudantium quo error ducimus. Ea facere mollitia, dolorum totam
-        alias odio, sunt, harum quis vitae illo iure dolorem voluptas tempore sapiente impedit! Explicabo ipsam ad
-        quaerat possimus, voluptate ipsum quasi animi a ipsa temporibus, dolore quod rerum illo omnis aut accusamus
-        eius? Ex tenetur molestias obcaecati magni iure, dolores in culpa deserunt tempora animi, ipsum voluptates
-        magnam temporibus quo nostrum delectus illo. Velit quisquam praesentium atque? Unde eligendi, beatae, omnis ex
-        minima fugiat dolores doloremque earum placeat enim consequuntur, dignissimos reiciendis accusantium molestias
-        inventore. Libero rerum voluptates quibusdam sed repudiandae quis fugit beatae fugiat voluptate. Nisi similique
-        cupiditate, illum vel sunt animi enim sint ut quaerat unde itaque maiores. Voluptate, obcaecati? Natus
-        exercitationem error, officia molestiae dolor illum nostrum inventore sit temporibus cupiditate ab. Amet
-        sapiente eligendi atque quaerat architecto vitae qui libero sunt explicabo adipisci eos ipsa sed esse quas
-        exercitationem dignissimos voluptate pariatur in, debitis quos temporibus dicta reiciendis aliquam minima?
-        Officiis sed amet magnam fugiat aliquid cupiditate assumenda quam dolore, cum enim est vero optio quasi repellat
-        temporibus nam explicabo obcaecati molestias facilis consequuntur expedita veritatis at. Facere vero officia
-        est, omnis consequatur veniam dolorum placeat, odit sint eius fugiat, aliquid expedita inventore beatae ea quis
-        sunt. Minima blanditiis laudantium nihil soluta quasi voluptatum amet qui sit, minus illo. Ab accusantium eius
-        minima doloremque perspiciatis, qui nobis fugit quaerat excepturi asperiores, libero culpa ipsum fugiat quis
-        vitae rerum. Quam voluptates saepe reprehenderit, delectus consequatur optio nobis illo minima fugit vitae eos
-        quidem enim quaerat qui dolor aperiam iusto quibusdam maiores mollitia voluptas. Consectetur laborum recusandae
-        debitis rerum odio voluptatum molestias quas deleniti veritatis, pariatur dolores facilis corrupti ipsam
-        eligendi accusantium esse error quaerat modi quo impedit reiciendis minima expedita in repellat? Ad deleniti
-        veritatis recusandae, quaerat corrupti optio accusantium voluptates totam earum architecto pariatur dolorem
-        numquam ullam inventore neque adipisci fugiat. Dolorem est quas repellat. Consequuntur fuga voluptatibus quis,
-        quae culpa dolore in perspiciatis reprehenderit aspernatur esse saepe, sequi deserunt modi odit, obcaecati
-        veritatis maiores placeat eos porro explicabo alias harum. Ex suscipit illum omnis nemo, reprehenderit odit
-        voluptatibus corrupti, obcaecati sed quod accusamus impedit dignissimos sit tempora facere repellendus dolorem
-        recusandae minus harum modi blanditiis. Consectetur quisquam aspernatur, facere ea corporis itaque dolor cum,
-        voluptatibus inventore numquam tempora? Consequatur, id dolorem corrupti laborum omnis reprehenderit quos
-        repellat? Quia, maxime. Delectus fuga repudiandae aperiam ducimus inventore asperiores recusandae ad
-        exercitationem. Aliquid assumenda temporibus minus libero, molestias odit illum, soluta aliquam quae obcaecati,
-        nam laborum consectetur hic aspernatur officiis adipisci sed? Corrupti officia fugiat dicta ullam
-        necessitatibus, voluptatibus tenetur. Dolores rerum quo voluptas corrupti delectus. Iste velit id eum laborum
-        quo itaque corporis magnam quae sunt adipisci fuga, corrupti laboriosam autem deleniti odit nesciunt quod
-        molestiae voluptatibus consectetur assumenda illo repellendus minus nostrum. Aliquid, ipsam! Necessitatibus
-        dolore doloremque officia rerum soluta fugiat officiis beatae modi, provident saepe dicta quia amet, minus
-        laboriosam sapiente, voluptatum doloribus quisquam nulla vel! Inventore aliquid voluptatem iure minima, debitis
-        sint dolore, error vitae quae distinctio, similique nam? Consectetur tempore debitis enim tenetur repudiandae
-        quis harum nam praesentium, aliquid possimus, nesciunt perspiciatis dolor doloremque nihil optio inventore
-        rerum, quasi ad dolorem laboriosam. Ea quas sed possimus, nostrum quam aperiam harum sapiente natus illo eum
-        ipsam repellendus tempora et tenetur exercitationem error nulla ducimus nesciunt repudiandae quaerat itaque?
-        Aliquam molestiae aliquid reiciendis placeat impedit, numquam vero dolorum sapiente ut, quam, quia asperiores.
-        Sint repudiandae officia, atque provident iusto cum impedit maiores rem sunt fuga beatae possimus odio dolore?
-        Sequi magni ut cupiditate corrupti inventore enim, doloremque eveniet earum totam quidem cumque expedita ipsa!
-        Unde corporis nostrum quos, qui ullam odio. Placeat perspiciatis sed expedita repudiandae pariatur incidunt, eos
-        temporibus error consectetur non iure possimus eum eligendi recusandae, adipisci suscipit magni quod voluptatum!
-        At voluptate autem officia corrupti tempore! Vitae at sapiente, laboriosam laudantium minima fugit dignissimos
-        vero, quia perspiciatis nesciunt rem libero qui nisi illo sed, quisquam dicta mollitia. Atque pariatur
-        laudantium, deserunt nesciunt nisi eaque a sint error cum eveniet, ad quod velit aspernatur at. Nemo provident
-        libero repudiandae nulla fuga fugit odio doloribus perspiciatis aliquid voluptate aut officiis quo veniam
-        debitis sapiente ipsam, voluptatibus quod optio blanditiis consequuntur! Perferendis inventore odio ipsa nulla,
-        aliquid numquam sapiente iusto illo cupiditate alias harum id, soluta ut illum nesciunt tenetur quam, ullam odit
-        sint corrupti provident? Saepe velit, iusto numquam reiciendis exercitationem officiis blanditiis! Explicabo,
-        veniam velit et inventore fugiat labore similique sapiente nostrum animi exercitationem, tenetur consequatur.
-        Quibusdam, qui nesciunt accusantium aliquam recusandae reprehenderit praesentium, blanditiis aliquid, sit
-        accusamus id assumenda eveniet. Eligendi, tenetur quam voluptas amet optio ratione sint, earum placeat
-        dignissimos in consequatur enim doloribus provident, perspiciatis repellat tempora saepe? Ipsam nulla repellat
-        enim, vitae ab explicabo dignissimos. Voluptates neque consectetur molestias mollitia aliquid doloremque minus
-        accusantium ipsa architecto perspiciatis doloribus ipsam dolorem deserunt optio, beatae alias dolore facere
-        eligendi voluptatem delectus eveniet iure. Reiciendis tenetur facilis accusamus, excepturi asperiores dolore,
-        sapiente consequatur explicabo veniam laudantium cum nam non ab. Reiciendis saepe nemo quaerat, nostrum alias
-        aliquid velit accusamus tempore non, unde repellat labore vel dignissimos laboriosam nesciunt, est repudiandae
-        nam placeat explicabo facilis perferendis. Cum quod dolorum, tenetur reiciendis harum earum laboriosam aperiam
-        ullam explicabo hic similique minus placeat praesentium, impedit qui accusantium exercitationem quia aliquid
-        soluta error ea maiores! Fugiat aliquam voluptate facere dolore modi ullam, doloribus, voluptatem sit saepe
-        reprehenderit vitae quis eveniet ab mollitia quas eligendi dolores quam illum dicta qui maxime. Cumque iste
-        ipsum, ea corporis optio molestias non debitis voluptas ut, eum obcaecati quisquam expedita. Debitis magnam
-        alias, rem est asperiores at, corrupti accusamus minima sapiente recusandae neque aspernatur molestiae
-        architecto nulla! Ratione dignissimos neque aperiam quo, laborum officiis pariatur numquam vel excepturi,
-        voluptate magnam sapiente quod rerum quibusdam. Commodi, quo natus? Beatae explicabo at ratione labore quidem,
-        aut provident sapiente nostrum ab accusamus asperiores, voluptate placeat. Neque dignissimos rerum assumenda
-        consequatur soluta.</p>
-
+// Skill bars animate when visible
+const barObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+        bar.style.width = bar.dataset.w + '%';
+      });
+      barObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.skill-card').forEach(c => barObserver.observe(c));
+</script>
 </body>
-
 </html>
